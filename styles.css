@@ -1,0 +1,66 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url('background.jpg'); /* Replace with your actual image path */
+  background-size: cover;
+  background-position: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: orange;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 40px;
+}
+
+header {
+  text-align: left;
+  margin-bottom: 60px;
+}
+
+header h1 {
+  font-size: 3em;
+  color: yellow;
+  margin: 0;
+}
+
+header p {
+  font-size: 1.2em;
+  color: orange;
+}
+
+.sidebar-links {
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  transform: translateY(-50%);
+}
+
+.sidebar-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar-links li {
+  margin: 15px 0;
+}
+
+.sidebar-links a {
+  text-decoration: none;
+  color: orange;
+  font-size: 1.2em;
+  transition: color 0.3s ease;
+}
+
+.sidebar-links a:hover {
+  color: yellow;
+}
+
+.intro {
+  max-width: 600px;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 20px;
+  border-radius: 10px;
+}
