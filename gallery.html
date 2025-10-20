@@ -6,6 +6,66 @@
   <meta name="description" content="Gallery - Explore the artwork at Experimental Art Studios." />
   <title>Gallery - Experimental Art Studios</title>
   <link rel="stylesheet" href="site-styles.css" />
+  <style>
+    /* Inline styles for slideshow, can be moved to site-styles.css if preferred */
+    .slideshow-container {
+      max-width: 600px;
+      position: relative;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+
+    .slide {
+      display: none;
+      width: 100%;
+      height: auto;
+    }
+
+    .slide img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    .prev, .next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      padding: 1rem;
+      cursor: pointer;
+      font-size: 1.5rem;
+    }
+
+    .prev {
+      left: 0;
+    }
+
+    .next {
+      right: 0;
+    }
+
+    .dot-container {
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    .dot {
+      height: 10px;
+      width: 10px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      margin: 0 5px;
+      cursor: pointer;
+    }
+
+    .dot.active {
+      background-color: orange;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
@@ -23,6 +83,15 @@
     <main>
       <section class="content">
         <h1>Gallery</h1>
+        <div class="slideshow-container">
+          <div class="slide"><img src="images/1000001023.jpg" alt="Artwork 1"></div>
+          <div class="slide"><img src="images/20220301_125215.jpg" alt="Artwork 2"></div>
+          <div class="slide"><img src="images/20220530_104540.jpg" alt="Artwork 3"></div>
+          <!-- Add more slides as needed based on your images -->
+          <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+          <button class="next" onclick="changeSlide(1)">&#10095;</button>
+        </div>
+        <div class="dot-container"></div>
         <p>
           Discover a stunning collection of artwork created by our talented artists. From paintings to sculptures, our gallery showcases the diversity of creative expression.
         </p>
@@ -31,6 +100,55 @@
         </p>
       </section>
     </main>
-  </div>
-</body>
+
+    <script>
+      let slideIndex = 0;
+      const slides = document.getElementsByClassName("slide");
+      const dots = [];
+
+      function showSlide(index) {
+        if (index >= slides.length) slideIndex = 0;
+        if (index < 0) slideIndex = slides.length - 1;
+        for (let i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+        for (let i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex].style.display = "block";
+        if (dots[slideIndex]) dots[slideIndex].className += " active";
+      }
+
+      function changeSlide(n) {
+        slideIndex += n;
+        showSlide(slideIndex);
+      }
+
+      function createDots() {
+        const dotContainer = document.querySelector(".dot-container");
+        for (let i = 0; i < slides.length; i++) {
+          const dot = document.createElement("span");
+          dot.className = "dot";
+          dot.onclick = () => {
+            slideIndex = i;
+            showSlide(slideIndex);
+          };
+          dotContainer.appendChild(dot);
+          dots.push(dot);
+        }
+      }
+
+      function autoSlide() {
+        changeSlide(1);
+        setTimeout(autoSlide, 5000); // Change slide every 5 seconds
+      }
+
+      // Initialize slideshow
+      document.addEventListener("DOMContentLoaded", () => {
+        createDots();
+        showSlide(slideIndex);
+        autoSlide();
+      });
+    </script>
+  </body>
 </html>
