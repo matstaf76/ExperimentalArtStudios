@@ -6,7 +6,7 @@
   --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   --max-width: 1200px;
   --spacing-unit: 1rem;
-  --header-height: 300px; /* Adjust based on your image height */
+  --header-height: 600px; /* Further increased to make the background image larger */
 }
 
 /* Reset and base styles */
@@ -31,8 +31,8 @@ body {
   width: 100%;
   height: var(--header-height);
   background-image: url('images/1stlogoExperimentalArtStudios.png');
-  background-size: auto 100%; /* Maintains image width, scales height to fit */
-  background-position: center top;
+  background-size: contain; /* Changed back to contain to show the full image without cutting off */
+  background-position: center center; /* Centered for better visibility on larger size */
   background-repeat: no-repeat;
   position: relative;
   z-index: 1; /* Ensures header stays above other content */
@@ -93,7 +93,7 @@ main {
   padding: var(--spacing-unit) * 2;
   background-color: #000; /* Matches body background */
   z-index: 0; /* Ensures main stays below header and sidebar */
-  margin-top: var(--header-height); /* Pushes main below the header image */
+  margin-top: var(--header-height); /* Pushes main below the larger header image */
 }
 
 .intro {
@@ -120,7 +120,7 @@ main {
 /* Responsive design */
 @media (max-width: 768px) {
   .header-image {
-    height: 200px; /* Reduced height for smaller screens */
+    height: 400px; /* Increased from 350px */
   }
 
   .sidebar-links {
@@ -147,7 +147,7 @@ main {
   }
 
   main {
-    margin-top: 200px; /* Adjusted to match reduced header height */
+    margin-top: 400px; /* Adjusted to match larger height */
     padding: var(--spacing-unit);
   }
 
@@ -162,7 +162,7 @@ main {
 
 @media (max-width: 480px) {
   .header-image {
-    height: 150px; /* Further reduced for small screens */
+    height: 300px; /* Increased from 250px */
   }
 
   .sidebar-links a {
@@ -170,7 +170,7 @@ main {
   }
 
   main {
-    margin-top: 150px; /* Adjusted to match reduced header height */
+    margin-top: 300px; /* Adjusted to match larger height */
     padding: calc(var(--spacing-unit) * 0.75);
   }
 
