@@ -35,6 +35,7 @@ body {
   background-position: center top;
   background-repeat: no-repeat;
   position: relative;
+  z-index: 1; /* Ensures header stays above other content */
 }
 
 .header-image p {
@@ -56,6 +57,7 @@ body {
   top: var(--spacing-unit);
   right: var(--spacing-unit);
   width: 200px;
+  z-index: 2; /* Ensures sidebar stays above main content */
 }
 
 .sidebar-links ul {
@@ -90,6 +92,8 @@ main {
   width: 100%;
   padding: var(--spacing-unit) * 2;
   background-color: #000; /* Matches body background */
+  z-index: 0; /* Ensures main stays below header and sidebar */
+  margin-top: var(--header-height); /* Pushes main below the header image */
 }
 
 .intro {
@@ -123,6 +127,7 @@ main {
     position: static;
     width: 100%;
     margin-top: var(--spacing-unit);
+    z-index: 2;
   }
 
   .sidebar-links ul {
@@ -142,6 +147,7 @@ main {
   }
 
   main {
+    margin-top: 200px; /* Adjusted to match reduced header height */
     padding: var(--spacing-unit);
   }
 
@@ -161,6 +167,11 @@ main {
 
   .sidebar-links a {
     padding: 0.4em 0.8em;
+  }
+
+  main {
+    margin-top: 150px; /* Adjusted to match reduced header height */
+    padding: calc(var(--spacing-unit) * 0.75);
   }
 
   .intro {
